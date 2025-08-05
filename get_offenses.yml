@@ -1,0 +1,20 @@
+---
+- name: Get QRadar offenses
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Get offenses from QRadar
+      uri:
+        url: "https://192.168.100.87/api/siem/offenses"
+        method: GET
+        user: "admin"
+        password: "QRadar2025"
+        force_basic_auth: yes
+        validate_certs: no
+        return_content: yes
+      register: qradar_output
+
+    - name: Print QRadar offenses
+      debug:
+        var: qradar_output.json
