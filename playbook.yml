@@ -1,0 +1,7 @@
+- name: Semaphore test playbook
+  hosts: local
+  gather_facts: false
+  tasks:
+    - name: Say hello
+      debug:
+        msg: "Hello from Semaphore!"
